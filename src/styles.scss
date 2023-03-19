@@ -1,1 +1,420 @@
-/* You can add global styles to this file, and also import other style files */
+// Some global styling below
+html,
+body {
+    height: 100%;
+    padding: 0.8em 0.6em;
+    background-color: #181f32 !important;
+}
+
+body {
+    margin: 0;
+    font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+.card {
+    border-radius: 8px;
+    padding: 8px;
+    margin: 8px 4px 8px;
+    background-color: #eef2f7;
+    box-shadow: 0px 2px 1px -1px rgba(0, 0, 0, 0.2),
+        0px 1px 1px 0px rgba(0, 0, 0, 0.14),
+        0px 1px 3px 0px rgba(0, 0, 0, 0.12)
+}
+
+.main-header {
+    display: flex;
+    flex-direction: row;
+    padding: 2px;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+
+.column {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: stretch;
+}
+
+.column:has(app-mat-list) {
+    width: 38%;
+    justify-content: center;
+}
+
+.column:has(app-article-list) {
+    width: 80%;
+    justify-content: center;
+}
+
+.row {
+    display: flex;
+    flex-direction: row;
+    align-items: stretch;
+}
+
+.noticeMenuSelected {
+    font-size: 14px;
+    font-weight: bold;
+    color: white;
+}
+
+.bodyStyling {
+    font-family: Roboto, "Helvetica Neue", sans-serif;
+    font-size: 14px;
+    font-weight: 400;
+    color: #333;
+}
+
+.noticeArticleHeading {
+    font-size: 20px;
+    font-weight: 400;
+    color: #333;
+    padding: 5px;
+}
+
+.toggle:checked+.lbl-toggle+.collapsible-content {
+    max-height: fit-content;
+    background-image: none;
+}
+
+input[type=checkbox] {
+    display: none;
+}
+
+.lbl-toggle {
+    font-weight: 600;
+    position: relative;
+    overflow: hidden;
+    z-index: 3;
+    font-size: 16px;
+    left: 348px;
+    cursor: pointer;
+    transition: all 0.25s ease-out;
+    color: #fcfcfd;
+    background-color: #181f32;
+    padding: 5px;
+    border-radius: 5px;
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+}
+
+label::before {
+    content: 'Read More';
+}
+
+[type="checkbox"]:checked+label:after {
+    content: 'Read Less';
+}
+
+[type="checkbox"]:checked+label:before {
+    content: '';
+    display: none;
+}
+
+.lbl-toggle::before {
+    vertical-align: bottom;
+    margin-right: .7em;
+    transform: translateY(-2px);
+    transition: transform 0.25s ease-out;
+    margin: 0px;
+}
+
+.cell-styling {
+    border: 3px solid black;
+    border-radius: 5px;
+    box-shadow: 2px 2px 2px #585d68;
+    padding: 0px;
+}
+
+.collapsible-content {
+    max-height: 130px;
+    position: relative;
+    overflow: hidden;
+    width: 100%;
+    background-image: linear-gradient(to bottom, transparent, #222222);
+    transition: max-height 0.25s ease-in-out;
+}
+
+.collapsible-inner {
+    padding: 5px;
+    z-index: -2;
+}
+
+
+.toggle {
+    color: #fcfcfd;
+    background-color: #181f32;
+}
+
+
+/*
+|=========================================================|
+| Color palette defined below :root                       |
+| The section below :root has class > variable reference  |
+|=========================================================|
+*/
+
+//========================================================|
+/*#region Color Palettes & Color Variables*/
+:root {
+    --primary-h: 178;
+    --primary-s: 22%;
+    --primary-l: 35%;
+
+    --secondary-h: 40;
+    --secondary-s: 50%;
+    --secondary-l: 57%;
+
+    --dark-h: 177;
+    --dark-s: 57%;
+    --dark-l: 7%;
+
+    --gray-h: 177;
+    --gray-s: 21%;
+    --gray-l: 22%;
+
+    --light-h: 180;
+    --light-s: 22%;
+    --light-l: 52%;
+
+    --primary: hsl(var(--primary-h), var(--primary-s), var(--primary-l));
+    --primary-10: hsl(var(--primary-h), var(--primary-s), calc(var(--primary-l) + 5%));
+    --primary-20: hsl(var(--primary-h), var(--primary-s), calc(var(--primary-l) + 10%));
+    --primary-30: hsl(var(--primary-h), var(--primary-s), calc(var(--primary-l) + 15%));
+    --primary-40: hsl(var(--primary-h), var(--primary-s), calc(var(--primary-l) + 20%));
+    --primary-50: hsl(var(--primary-h), var(--primary-s), calc(var(--primary-l) + 25%));
+    --primary-60: hsl(var(--primary-h), var(--primary-s), calc(var(--primary-l) + 30%));
+    --primary-70: hsl(var(--primary-h), var(--primary-s), calc(var(--primary-l) + 35%));
+    --primary-80: hsl(var(--primary-h), var(--primary-s), calc(var(--primary-l) + 40%));
+
+    --secondary: hsl(var(--secondary-h), var(--secondary-s), var(--secondary-l));
+    --secondary-10: hsl(var(--secondary-h), var(--secondary-s), calc(var(--secondary-l) + 5%));
+    --secondary-20: hsl(var(--secondary-h), var(--secondary-s), calc(var(--secondary-l) + 10%));
+    --secondary-30: hsl(var(--secondary-h), var(--secondary-s), calc(var(--secondary-l) + 15%));
+    --secondary-40: hsl(var(--secondary-h), var(--secondary-s), calc(var(--secondary-l) + 20%));
+    --secondary-50: hsl(var(--secondary-h), var(--secondary-s), calc(var(--secondary-l) + 25%));
+    --secondary-60: hsl(var(--secondary-h), var(--secondary-s), calc(var(--secondary-l) + 30%));
+    --secondary-70: hsl(var(--secondary-h), var(--secondary-s), calc(var(--secondary-l) + 35%));
+    --secondary-80: hsl(var(--secondary-h), var(--secondary-s), calc(var(--secondary-l) + 40%));
+
+    --dark: hsl(var(--dark-h), var(--dark-s), var(--dark-l));
+    --dark-10: hsl(var(--dark-h), var(--dark-s), calc(var(--dark-l) + 5%));
+    --dark-20: hsl(var(--dark-h), var(--dark-s), calc(var(--dark-l) + 10%));
+    --dark-30: hsl(var(--dark-h), var(--dark-s), calc(var(--dark-l) + 15%));
+    --dark-40: hsl(var(--dark-h), var(--dark-s), calc(var(--dark-l) + 20%));
+    --dark-50: hsl(var(--dark-h), var(--dark-s), calc(var(--dark-l) + 25%));
+    --dark-60: hsl(var(--dark-h), var(--dark-s), calc(var(--dark-l) + 30%));
+    --dark-70: hsl(var(--dark-h), var(--dark-s), calc(var(--dark-l) + 35%));
+    --dark-80: hsl(var(--dark-h), var(--dark-s), calc(var(--dark-l) + 40%));
+
+    --gray: hsl(var(--gray-h), var(--gray-s), var(--gray-l));
+    --gray-10: hsl(var(--gray-h), var(--gray-s), calc(var(--gray-l) + 5%));
+    --gray-20: hsl(var(--gray-h), var(--gray-s), calc(var(--gray-l) + 10%));
+    --gray-30: hsl(var(--gray-h), var(--gray-s), calc(var(--gray-l) + 15%));
+    --gray-40: hsl(var(--gray-h), var(--gray-s), calc(var(--gray-l) + 20%));
+    --gray-50: hsl(var(--gray-h), var(--gray-s), calc(var(--gray-l) + 25%));
+    --gray-60: hsl(var(--gray-h), var(--gray-s), calc(var(--gray-l) + 30%));
+    --gray-70: hsl(var(--gray-h), var(--gray-s), calc(var(--gray-l) + 35%));
+    --gray-80: hsl(var(--gray-h), var(--gray-s), calc(var(--gray-l) + 40%));
+
+    --light: hsl(var(--light-h), var(--light-s), var(--light-l));
+    --light-10: hsl(var(--light-h), var(--light-s), calc(var(--light-l) + 5%));
+    --light-20: hsl(var(--light-h), var(--light-s), calc(var(--light-l) + 10%));
+    --light-30: hsl(var(--light-h), var(--light-s), calc(var(--light-l) + 15%));
+    --light-40: hsl(var(--light-h), var(--light-s), calc(var(--light-l) + 20%));
+    --light-50: hsl(var(--light-h), var(--light-s), calc(var(--light-l) + 25%));
+    --light-60: hsl(var(--light-h), var(--light-s), calc(var(--light-l) + 30%));
+    --light-70: hsl(var(--light-h), var(--light-s), calc(var(--light-l) + 35%));
+    --light-80: hsl(var(--light-h), var(--light-s), calc(var(--light-l) + 40%));
+}
+
+
+.primary {
+    background: var(--primary);
+}
+
+.primary-10 {
+    background: var(--primary-10);
+}
+
+.primary-20 {
+    background: var(--primary-20);
+}
+
+.primary-30 {
+    background: var(--primary-30);
+}
+
+.primary-40 {
+    background: var(--primary-40);
+}
+
+.primary-50 {
+    background: var(--primary-50);
+}
+
+.primary-60 {
+    background: var(--primary-60);
+}
+
+.primary-70 {
+    background: var(--primary-70);
+}
+
+.primary-80 {
+    background: var(--primary-80);
+}
+
+.secondary {
+    background: var(--secondary);
+}
+
+.secondary-10 {
+    background: var(--secondary-10);
+}
+
+.secondary-20 {
+    background: var(--secondary-20);
+}
+
+.secondary-30 {
+    background: var(--secondary-30);
+}
+
+.secondary-40 {
+    background: var(--secondary-40);
+}
+
+.secondary-50 {
+    background: var(--secondary-50);
+}
+
+.secondary-60 {
+    background: var(--secondary-60);
+}
+
+.secondary-70 {
+    background: var(--secondary-70);
+}
+
+.secondary-80 {
+    background: var(--secondary-80);
+}
+
+.dark {
+    background: var(--dark);
+}
+
+.dark-10 {
+    background: var(--dark-10);
+}
+
+.dark-20 {
+    background: var(--dark-20);
+}
+
+.dark-30 {
+    background: var(--dark-30);
+}
+
+.dark-40 {
+    background: var(--dark-40);
+}
+
+.dark-50 {
+    background: var(--dark-50);
+}
+
+.dark-60 {
+    background: var(--dark-60);
+}
+
+.dark-70 {
+    background: var(--dark-70);
+}
+
+.dark-80 {
+    background: var(--dark-80);
+}
+
+.gray {
+    background: var(--gray);
+}
+
+.gray-10 {
+    background: var(--gray-10);
+}
+
+.gray-20 {
+    background: var(--gray-20);
+}
+
+.gray-30 {
+    background: var(--gray-30);
+}
+
+.gray-40 {
+    background: var(--gray-40);
+}
+
+.gray-50 {
+    background: var(--gray-50);
+}
+
+.gray-60 {
+    background: var(--gray-60);
+}
+
+.gray-70 {
+    background: var(--gray-70);
+}
+
+.gray-80 {
+    background: var(--gray-80);
+}
+
+.light {
+    background: var(--light);
+}
+
+.light-10 {
+    background: var(--light-10);
+}
+
+.light-20 {
+    background: var(--light-20);
+}
+
+.light-30 {
+    background: var(--light-30);
+}
+
+.light-40 {
+    background: var(--light-40);
+}
+
+.light-50 {
+    background: var(--light-50);
+}
+
+.light-60 {
+    background: var(--light-60);
+}
+
+.light-70 {
+    background: var(--light-70);
+}
+
+.light-80 {
+    background: var(--light-80);
+}
+
+/*#endregion Color Palettes & Color Variables*/
+//========================================================|
