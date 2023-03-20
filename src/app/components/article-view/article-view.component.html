@@ -1,1 +1,22 @@
-<p>article-view works!</p>
+<div class="card">
+    <div class="header-row">
+        <app-header text="{{ currentArticle.title }}"> </app-header>
+        <div class="btn-row">
+            <app-btn color="orange" text="Edit an article" onclick="editArticle()">
+            
+            </app-btn>
+            <app-btn color="red" text="Delete an article" onclick="deleteArticle()">
+            
+            </app-btn>
+            <a routerLink="/article-list">
+                <app-btn color="primary" text="View all articles">
+                </app-btn>
+            </a>
+        </div>
+    </div>
+    <div>
+        <div>
+            {{ currentArticle.body }}
+        </div>
+    </div>
+</div>

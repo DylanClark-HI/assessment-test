@@ -1,1 +1,8 @@
-<p>article-list works!</p>
+<div class="header-row">
+    <app-header text="Article List"></app-header>
+    <a routerLink="/article-form">
+        <app-btn color="orange" text="Create a new Article">
+        </app-btn>
+    </a>
+</div>
+<app-article-item *ngFor="let article of articles; let i = index"  [article]="article" [class.active]="i == currentIndex" ></app-article-item>

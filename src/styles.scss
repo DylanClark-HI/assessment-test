@@ -21,7 +21,7 @@ body {
         0px 1px 3px 0px rgba(0, 0, 0, 0.12)
 }
 
-.main-header {
+.header-row {
     display: flex;
     flex-direction: row;
     padding: 2px;
@@ -57,6 +57,12 @@ body {
     display: flex;
     flex-direction: row;
     align-items: stretch;
+}
+
+.btn-row {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
 }
 
 .noticeMenuSelected {
@@ -105,33 +111,33 @@ input[type=checkbox] {
     -webkit-border-radius: 5px;
 }
 
-label::before {
-    content: 'Read More';
-}
+// label::before {
+//     content: 'Read More';
+// }
 
-[type="checkbox"]:checked+label:after {
-    content: 'Read Less';
-}
+// [type="checkbox"]:checked+label:after {
+//     content: 'Read Less';
+// }
 
-[type="checkbox"]:checked+label:before {
-    content: '';
-    display: none;
-}
+// [type="checkbox"]:checked+label:before {
+//     content: '';
+//     display: none;
+// }
 
-.lbl-toggle::before {
-    vertical-align: bottom;
-    margin-right: .7em;
-    transform: translateY(-2px);
-    transition: transform 0.25s ease-out;
-    margin: 0px;
-}
+// .lbl-toggle::before {
+//     vertical-align: bottom;
+//     margin-right: .7em;
+//     transform: translateY(-2px);
+//     transition: transform 0.25s ease-out;
+//     margin: 0px;
+// }
 
-.cell-styling {
-    border: 3px solid black;
-    border-radius: 5px;
-    box-shadow: 2px 2px 2px #585d68;
-    padding: 0px;
-}
+// .cell-styling {
+//     border: 3px solid black;
+//     border-radius: 5px;
+//     box-shadow: 2px 2px 2px #585d68;
+//     padding: 0px;
+// }
 
 .collapsible-content {
     max-height: 130px;

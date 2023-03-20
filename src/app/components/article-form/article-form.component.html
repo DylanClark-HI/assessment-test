@@ -1,0 +1,88 @@
+<div class="header-row">
+    <app-header text="New Article / Update Article"></app-header>
+    <a routerLink="/">
+        <app-btn color="orange" text="Return">
+        </app-btn>
+    </a>
+</div>
+<div class="holder-article-form">
+    <div class="submit-form" (ngSubmit)="onSubmit">
+        <div>
+            <div class="form-control">
+                <label for="title">Title new</label>
+                <input type="text" name="title" id="title" placeholder="Add a title" required [(ngModel)]="newArticle.title"  />
+            </div>
+
+            <div class="form-control">
+                <label for="body" class="mb-2">Body new</label>
+                <input type="text" name="body" id="body" placeholder="Add the article body" required [(ngModel)]="newArticle.body" />
+            </div>
+            <button (click)="onSubmit()" class="btn btn-success">Submit</button>
+        </div>
+    </div>
+
+    <div class="mt-8 holder-article-form" (ngSubmit)="onSubmit" *ngIf="currentArticle">
+        <div>
+            <div class="form-group mb-3">
+                <label for="title" class="mb-2">Title</label>
+                <input type="text" class="form-control" id="title" readonly required formControlName="title"
+                    name="title" />
+                    <!-- [(ngModel)]="currentArticle.title" -->
+            </div>
+
+            <div class="form-group mb-3">
+                <label for="body" class="mb-2">Body</label>
+                <input type="text" class="form-control" id="body" readonly required formControlName="body"
+                    name="body" />
+                    <!-- [(ngModel)]="currentArticle.body" -->
+            </div>
+            <button (click)="saveArticle()" class="btn btn-success">Update</button>
+        </div>
+        <div>
+            <h4>New Article was added Successfully!</h4>
+            <!-- <button class="btn btn-success" (click)="newArticle()">Add</button> -->
+        </div>
+    </div>
+</div>
+
+<!-- <div class="card" *ngIf="!article.id">
+    <h4>Article</h4>
+    <div>
+        <label><strong>Title:</strong></label> {{ article.title }}
+    </div>
+    <div>
+        <label><strong>Body:</strong></label>
+        {{ article.body }}
+    </div>
+    <a class="btn btn-warning">
+        Edit
+    </a>
+</div> -->
+
+<!-- <ng-template #editable>
+    <div *ngIf="article.id" class="edit-form">
+        <h4>Article</h4>
+        <form>
+            <div class="form-group mb-3">
+                <label for="title" class="mb-2">Title</label>
+                <input type="text" class="form-control" id="title"  name="title" /> 
+                [(ngModel)]="currentArticle.title"
+            </div>
+            <div class="form-group mb-3">
+                <label for="body" class="mb-2">Body</label>
+                <input type="text" class="form-control" id="body" [(ngModel)]="article.body" name="body" />
+                 
+             </div>
+        </form>
+        <button class="btn btn-danger me-2 mb-2" (click)="deleteArticle()" > 
+            Delete
+        </button>
+        <button type="submit" class="btn btn-success mb-2"  (click)="updateArticle()">
+            Update
+        </button>
+    </div>
+    <div *ngIf="!article.id">
+        <br />
+        <p>Cannot access this Article...</p>
+    </div>
+</ng-template> -->
