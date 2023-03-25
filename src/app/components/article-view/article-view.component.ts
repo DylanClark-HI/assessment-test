@@ -25,7 +25,8 @@ export class ArticleViewComponent implements OnInit {
     private apiService: ApiService,
     private url: ActivatedRoute,
     private router: Router,
-    public dialog: MatDialog
+    public dialog: MatDialog,
+    public dialogConfig: MatDialogConfig
     ) { }
 
   ngOnInit(): void {
@@ -34,14 +35,18 @@ export class ArticleViewComponent implements OnInit {
 
   openDialog() {
     this.dialogRef = this.dialog.open(DialogComponent, {
-      disableClose: false
+      disableClose: false,
+      hasBackdrop: true,
+      backdropClass: 'backdrop',
+      closeOnNavigation: true
     });
-    this.dialogRef.componentInstance.confirmMessage = "Are you sure you want to delete?"
+    this.dialogRef.componentInstance.confirmMessage = "Are you sure you want to delete " + this.currentArticle.title + "?"
+    // oncancel(this.dialogRef.close);
 
     this.dialogRef.afterClosed().subscribe(result => {
       if (result) {
         this.apiService.deleteArticle(this.id).subscribe({ 
-          next: (result: any) => {
+          next: () => {
             alert('Article successfully deleted.');
             this.router.navigate(['/']);
           },

@@ -1,10 +1,9 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import { Article } from '../models/article';
 
-const baseUrl = 'http://localhost:4200/api/articles';
 
 
 @Injectable({
@@ -12,7 +11,7 @@ const baseUrl = 'http://localhost:4200/api/articles';
 })
 export class ApiService {
 
-  PHP_API_SERVER = "http://angularApi/controllers/apiController.php";
+  PHP_API_SERVER = "http://tinManAssessmentTest/controllers/apiController.php";
 
   constructor(private http: HttpClient) { }
 

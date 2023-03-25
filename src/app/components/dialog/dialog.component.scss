@@ -1,5 +1,6 @@
 .holder {
     display: flex;
+    align-items: flex-start;
     flex-direction: column;
     align-self: center;
     padding: 0.2em;
@@ -27,6 +28,10 @@
     margin: 0px;
     font-size: smaller;
     
+}
+
+.backdrop {
+    background-color: rgba(211, 211, 211, 0.26);
 }
 
 .mat-dialog-actions {
