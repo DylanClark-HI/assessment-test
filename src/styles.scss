@@ -11,15 +11,26 @@ body {
     font-family: Roboto, "Helvetica Neue", sans-serif;
 }
 
+.sub-header {
+    font-size: smaller;
+    font-weight: lighter;
+    
+    h3 {
+        margin: 0px;
+        margin-left: 8px;
+    }
+}
+
 .card {
-    border-radius: 8px;
-    padding: 8px;
-    margin: 8px 4px 8px;
+    border-radius: 4px;
+    padding: 4px;
+    margin: 4px 4px 8px;
     background-color: #eef2f7;
     box-shadow: 0px 2px 1px -1px rgba(0, 0, 0, 0.2),
         0px 1px 1px 0px rgba(0, 0, 0, 0.14),
         0px 1px 3px 0px rgba(0, 0, 0, 0.12)
 }
+
 
 .header-row {
     display: flex;
@@ -109,6 +120,20 @@ input[type=checkbox] {
     border-radius: 5px;
     -moz-border-radius: 5px;
     -webkit-border-radius: 5px;
+}
+
+mat-dialog-container {
+    display: flex !important;
+    padding: 0px !important;
+
+}
+
+a {
+    cursor: pointer;
+}
+
+button {
+    cursor: pointer;
 }
 
 // label::before {

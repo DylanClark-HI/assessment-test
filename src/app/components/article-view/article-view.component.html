@@ -1,22 +1,19 @@
-<div class="card">
+<div>
     <div class="header-row">
-        <app-header text="{{ currentArticle.title }}"> </app-header>
+        <app-header text="{{ currentArticle.title }}" class="sub-header"></app-header>
         <div class="btn-row">
-            <app-btn color="orange" text="Edit an article" onclick="editArticle()">
-            
-            </app-btn>
-            <app-btn color="red" text="Delete an article" onclick="deleteArticle()">
-            
-            </app-btn>
+            <a routerLink="/article-form/{{currentArticle.id}}"><app-btn color="orange" text="Edit an article"></app-btn></a>
+            <app-btn color="red" text="Delete an article" (click)="openDialog()"></app-btn>
+            <!-- (click)="deleteArticle(currentArticle.id)" -->
             <a routerLink="/article-list">
                 <app-btn color="primary" text="View all articles">
                 </app-btn>
             </a>
         </div>
     </div>
-    <div>
-        <div>
+    <div class="article-body card">
+        <p>
             {{ currentArticle.body }}
-        </div>
+        </p>
     </div>
 </div>

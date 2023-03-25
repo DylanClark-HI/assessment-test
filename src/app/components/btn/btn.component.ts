@@ -20,5 +20,4 @@ export class BtnComponent implements OnInit {
   onClick() {
     this.viewClick.emit();
   }
-
 }

@@ -1,0 +1,24 @@
+.article-body {
+    font-size: smaller;
+    p {
+        margin: 4px 8px 4px 8px;
+        display: -webkit-box;
+        text-overflow: ellipsis;
+        overflow: hidden;
+        -webkit-box-orient: vertical;
+        -webkit-line-clamp: 3;
+    }
+}
+
+.article-header {
+    font-size: small;
+    margin-top: 0px;
+    font-size: 16px;
+    font-weight: lighter;
+
+}
+
+.card {
+    overflow: hidden;
+    padding-bottom: 8px;
+}

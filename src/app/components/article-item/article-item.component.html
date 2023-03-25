@@ -1,9 +1,11 @@
 <div class="card">
     <div class="header-row">
-        {{ article.title }}
-        <a routerLink="/article-view/{{article.id}}"><app-btn class="btn btn-secondary" text="View" color="lightblue"></app-btn></a>
+        <app-header text="{{ article.title }}" class="sub-header"></app-header>
+        
+        <a routerLink="/article-view/{{article.id}}"><app-btn class="btn" text="View" color="lightblue"></app-btn></a>
     </div>
-    <div>
+    <hr>
+    <div class="article-body">
         <p>
             {{ article.body }}
         </p>

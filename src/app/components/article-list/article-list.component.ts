@@ -1,6 +1,7 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { Article } from '../../models/article';
 import { ApiService } from '../../services/api.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-article-list',
@@ -13,33 +14,21 @@ export class ArticleListComponent implements OnInit {
 
   currentIndex = -1;
 
-  constructor(private apiService: ApiService) { }
+  constructor(
+    private apiService: ApiService,
+    private router: Router
+    ) { }
 
   ngOnInit(): void {
     this.apiService.getAll().subscribe((article) => this.articles = article);
   }
 
-  getAll(): void {
-    console.log("getallll");
-    this.apiService.getAll()
-      .subscribe({
-        next: (res) => {
-          console.log(res);
-        },
-        error: (err) => console.error(err)
-      });
-  }
-
-  editArticle(): void {
+  editArticle(updatedArticle: Article): void {
     console.log('Edit Article');
   }
 
-  deleteArticle(): void {
-    console.log('Delete Article');
-  }
-
-  viewAll(): void {
-    console.log('View All');
+  exportDb(): void {
+    console.log('Export DB');
   }
 
 }

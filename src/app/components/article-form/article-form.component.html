@@ -1,49 +1,26 @@
 <div class="header-row">
-    <app-header text="New Article / Update Article"></app-header>
+    <app-header text="New Article / Update Article" class="sub-header"></app-header>
     <a routerLink="/">
         <app-btn color="orange" text="Return">
         </app-btn>
     </a>
 </div>
-<div class="holder-article-form">
+<div class="holder-article-form card">
     <div class="submit-form" (ngSubmit)="onSubmit">
         <div>
             <div class="form-control">
-                <label for="title">Title new</label>
-                <input type="text" name="title" id="title" placeholder="Add a title" required [(ngModel)]="newArticle.title"  />
+                <label for="title" class="field-header">Title</label>
+                <input type="text" name="title" id="title" placeholder="Add a title" required [(ngModel)]="article.title"  />
             </div>
-
             <div class="form-control">
-                <label for="body" class="mb-2">Body new</label>
-                <input type="text" name="body" id="body" placeholder="Add the article body" required [(ngModel)]="newArticle.body" />
+                <label for="body" class="field-header">Body</label>
+                <textarea type="text" name="body" id="body" placeholder="Add the article body" required [(ngModel)]="article.body" rows="8"></textarea>
             </div>
             <button (click)="onSubmit()" class="btn btn-success">Submit</button>
         </div>
     </div>
 
-    <div class="mt-8 holder-article-form" (ngSubmit)="onSubmit" *ngIf="currentArticle">
-        <div>
-            <div class="form-group mb-3">
-                <label for="title" class="mb-2">Title</label>
-                <input type="text" class="form-control" id="title" readonly required formControlName="title"
-                    name="title" />
-                    <!-- [(ngModel)]="currentArticle.title" -->
-            </div>
-
-            <div class="form-group mb-3">
-                <label for="body" class="mb-2">Body</label>
-                <input type="text" class="form-control" id="body" readonly required formControlName="body"
-                    name="body" />
-                    <!-- [(ngModel)]="currentArticle.body" -->
-            </div>
-            <button (click)="saveArticle()" class="btn btn-success">Update</button>
-        </div>
-        <div>
-            <h4>New Article was added Successfully!</h4>
-            <!-- <button class="btn btn-success" (click)="newArticle()">Add</button> -->
-        </div>
-    </div>
-</div>
+    
 
 <!-- <div class="card" *ngIf="!article.id">
     <h4>Article</h4>

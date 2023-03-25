@@ -2,5 +2,17 @@
     display: flex;
     justify-content: flex-start;
     flex-direction: column;
-    margin: 0px 0px 4px;
+    margin-bottom: 4px;
+}
+
+.field-header {
+    margin: 4px 0px 2px 2px;
+}
+
+.card {
+    padding: 8px;
+}
+
+.input-field {
+    padding: 2px;
 }

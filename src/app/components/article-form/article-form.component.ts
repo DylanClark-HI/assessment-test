@@ -1,6 +1,7 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { ApiService } from '../../services/api.service';
 import { Article } from '../../models/article';
+import { ActivatedRoute } from '@angular/router';
 import { Router } from '@angular/router';
 @Component({
   selector: 'app-article-form',
@@ -9,53 +10,77 @@ import { Router } from '@angular/router';
 })
 export class ArticleFormComponent implements OnInit {
   @Output() onCreateArticle: EventEmitter<Article> = new EventEmitter();
-  @Input() currentArticle!: Article;
-  @Input() newArticle: Article = {
+  @Input() currentArticle: Article ={
+    id: '',
+    title: '',
+    body: ''
+  };
+  @Input() article: Article = {
     title: '',
     body: ''
   };
 
-  addForm: any;
+  id = this.url.snapshot.params['id'];
 
   constructor(
     private apiService: ApiService,
-    private router: Router
+    private url: ActivatedRoute,
+    private router: Router,
   ) { }
 
   ngOnInit(): void {
+    if(this.id > 0) {
+      this.apiService.getFullArticle(this.id).subscribe({
+        next: (result: any) => {
+          this.currentArticle = result;
+          this.article.title = this.currentArticle.title;
+          this.article.body = this.currentArticle.body;
+        },
+        error: (err) => console.error(err)
+      });
+    }
   }
 
   onSubmit(): void {
-    if (!this.newArticle.title || !this.newArticle.body) {
+    if (!this.article.title || !this.article.body) {
       console.log('Please fill in all fields');
       return;
     }
 
-    const newArticle = {
-      title: this.newArticle.title,
-      body: this.newArticle.body
-    }
+    if(this.id > 0) {
 
-    console.log(this.newArticle);
+      const updatedArticle = {
+        id: this.id,
+        title: this.article.title,
+        body: this.article.body
+      }
 
-    this.apiService.createNewArticle(newArticle).subscribe({
-      next: (result: any) => {
-        console.log(result);
-      },
-      error: (err) => console.error(err)
+      this.apiService.updateArticle(updatedArticle).subscribe({
+        next: (result: any) => {
+          if (result.status == "success") {
+            alert('Article updated successfully');
+            this.router.navigate(['/article-view/' + this.id]);
+          }
+        },
+        error: (err) => console.error(err)
       });
-    
-  }
 
-  saveArticle() {
-    console.log("article save in article-fomr fired");
-    // this.apiService.onEdit().subscribe(
-    //   (data: any) => {
-    //     console.log(data);
-    //     this.router.navigate(['/']);
-    //   },
-    //   error => {
-    //     alert(error);
-    //   });
-    }
+    } else {
+      const newArticle = {
+        title: this.article.title,
+        body: this.article.body
+      }
+
+      this.apiService.createNewArticle(newArticle).subscribe({
+        next: (result: any) => {
+          if (result.status == "success") {
+            alert('New Article created successfully');
+            console.log(result);
+            this.router.navigate(['/article-view/' + result.data[0].id]);
+          }
+        },
+        error: (err) => console.error(err)
+        });
+      }
+  }
 }

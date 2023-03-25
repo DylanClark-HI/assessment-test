@@ -1,0 +1,12 @@
+<div class="holder">
+    <app-header mat-dialog-title text="Delete Article" class="sub-header"></app-header>
+    <div class="card">
+        <div mat-dialog-content>
+            {{ confirmMessage }}
+        </div>
+        <div mat-dialog-actions class="btn-row">
+            <button mat-button mat-dialog-close (click)="dialogRef.close(false)">Cancel</button>
+            <button mat-button mat-dialog-close cdkFocusInitial (click)="dialogRef.close(true)">Confirm</button>
+        </div>
+    </div>
+</div>

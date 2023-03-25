@@ -17,15 +17,25 @@ export class ApiService {
   constructor(private http: HttpClient) { }
 
   getAll(): Observable<Article[]> {
-    return this.http.get<Article[]>(`${this.PHP_API_SERVER}/?action=${'getArticles'}`).pipe(
+    const data = {
+      action: 'getAll',
+      params: {}
+    }
+    return this.http.post<Article[]>(`${this.PHP_API_SERVER}`, data).pipe(
       map((res: any) => {
         return res['data'];
       })
     )
   }
 
-  getFullArticle(id: any): Observable<Article> {
-    return this.http.get<Article>(`${this.PHP_API_SERVER}/?action=${'getFullArticle'}&id=${id}`).pipe(
+  getFullArticle(id: number): Observable<Article> {
+    const data = {
+      action: 'getArticle',
+      params: {
+        id: id
+      }
+    }
+    return this.http.post<Article>(`${this.PHP_API_SERVER}`, data).pipe(
       map((res: any) => {
         return res['data'];
       })
@@ -33,11 +43,38 @@ export class ApiService {
   }
 
   createNewArticle(newArticle: any): Observable<any> {
-    return this.http.post(`${this.PHP_API_SERVER}/?action=${'addArticle'}`, newArticle);
+    const data = {
+      action: 'createArticle',
+      params: {
+        title: newArticle.title,
+        body: newArticle.body
+      }
+    }
+
+    return this.http.post(`${this.PHP_API_SERVER}`, data);
   }
 
 
-  onEdit() {
-    console.log("On edit api service fired");
+  updateArticle(updatedArticle: any): Observable<any> {
+    const data = {
+      action: 'updateArticle',
+      params: {
+        id: updatedArticle.id,
+        title: updatedArticle.title,
+        body: updatedArticle.body
+      }
+    }
+    return this.http.post(`${this.PHP_API_SERVER}`, data);
+  }
+
+  deleteArticle(id: number): Observable<any> {
+    const data = {
+      action: 'deleteArticle',
+      params: {
+        id: id
+      }
+    }
+
+    return this.http.post(`${this.PHP_API_SERVER}`, data);
   }
 }
