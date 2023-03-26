@@ -25,16 +25,19 @@ $url = str_replace('.', '_', $url);
 */
 
 $postVars = file_get_contents('php://input'); // $HTTP_RAW_POST_DATA deprecated
-if(empty($postVars) || $postVars[0] !== '{')
+if(empty($postVars) || $postVars[0] !== '{') {
     $post = array();
-else
+} else {
     $post = json_decode($postVars, TRUE);
+}
 
 // Using actions to call the function we want
 //================================
 $method = $_SERVER['REQUEST_METHOD'];
 
-if(empty($post['action']) || ($post['action']!=='getAll' && empty($post['params']))) return die('Invalid request');
+if(empty($post['action']) || ($post['action']!=='getAll' && empty($post['params']))) 
+    return die('Invalid request');
+
 $action = $post['action'];
 $params = $post['params'];
 
@@ -43,121 +46,14 @@ require_once($dir . DIRECTORY_SEPARATOR . 'components' . DIRECTORY_SEPARATOR . '
 $router = new Router();
 
 // Database details:
-$un = 'root';
-$pw = '';
-$db = 'portfolio_data';
-$host = 'localhost';
-$port = 3306;
+$un = 'root';                       // DB Username
+$pw = '';                           // DB Password 
+$db = 'portfolio_data';                           // DB Name
+$host = 'localhost';                         // Host Name
+$port = 3306;                       // Port Number
 
 $result = $router->initDb($un, $pw, $db, $host, $port);
 $result = $router->direct($action, $params);
-
-
-
-
-// switch ($action) {
-//     case 'getAll':
-//         echo getArticleList();
-//         break;
-//     case 'getArticle':
-//         echo getFullArticle($params);
-//         break;
-//     case 'updateArticle':
-//         echo updateArticle($params);
-//         break;
-//     case 'deleteArticle':
-//         echo deleteArticle($params);
-//         break;
-//     case 'createArticle':
-//         echo addArticle($params);
-//         break;
-//     default:
-//         echo response("Invalid API request");
-// }
-
-
-
-//  function getArticleList(){ 
-//     $sql = "SELECT * FROM `article`";
-//     $result = dbHandler($sql);
-//     echo $result;
-// }
-
-//  function getFullArticle($params){
-//     $id = $params['id'];
-
-//     $sql = "SELECT * FROM `article` WHERE id = $id";
-//     $result = dbHandler($sql);
-//     echo $result;
-// }
-
-// function deleteArticle($params){
-//     $id = $params['id'];
-
-//     $sql = "DELETE FROM `article` WHERE id = $id";
-//     $result = dbHandler($sql);
-//     echo $result;
-// }
-
-// function updateArticle($params){
-//     $id = $params['id'];
-//     $title = $params['title'];
-//     $body = $params['body'];
-
-//     $sql = "UPDATE `article` SET title = '$title', body = '$body' WHERE id = $id";
-//     $result = dbHandler($sql);
-//     echo $result;
-// }
-
-// function addArticle($params){
-//     $title = $params['title'];
-//     $body = $params['body'];
-
-//     $sql = "INSERT INTO `article` (title, body) VALUES ('$title', '$body')";
-//     $result = dbHandler($sql);
-//     echo $result;
-// }
-
-// function response($arr){
-//     $json_response = json_encode([
-//         'status' => 'success',
-//         'data' => $arr
-//     ]);
-
-//     return $json_response;
-// }
-
-// function dbHandler($sql) {
-//     $mysqli = new mysqli("localhost","root","","portfolio_data");
-
-//     // Check connection
-//     if ($mysqli -> connect_errno) {
-//         echo "Failed to connect to MySQL: " . $mysqli -> connect_error;
-//         exit();
-//     }
-
-//     if ($result = $mysqli -> query($sql)) {
-//         if(!empty($result)) {
-//             $arr = array();
-//             $recordCount = 0;
-//             $rowCount = $result -> num_rows;
-//             while($rowCount > 0) {
-//                 $row = $result -> fetch_assoc();
-//                 $recordCount = array_push($arr, $row);
-//                 $rowCount--;
-//             }
-//             $res = response($arr);
-            
-
-//             $result -> free_result();
-//             $mysqli -> close();
-
-//             return $res;
-//         }
-//     }
-//     return true;
-// }
-
 
 
 ?>

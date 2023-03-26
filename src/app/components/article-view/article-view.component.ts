@@ -25,23 +25,33 @@ export class ArticleViewComponent implements OnInit {
     private apiService: ApiService,
     private url: ActivatedRoute,
     private router: Router,
-    public dialog: MatDialog,
-    public dialogConfig: MatDialogConfig
+    public dialog: MatDialog
     ) { }
 
   ngOnInit(): void {
     this.setCurrentView(this.id);
   }
 
+
   openDialog() {
-    this.dialogRef = this.dialog.open(DialogComponent, {
-      disableClose: false,
-      hasBackdrop: true,
-      backdropClass: 'backdrop',
-      closeOnNavigation: true
-    });
-    this.dialogRef.componentInstance.confirmMessage = "Are you sure you want to delete " + this.currentArticle.title + "?"
-    // oncancel(this.dialogRef.close);
+    const dialogConfig = new MatDialogConfig();
+
+    dialogConfig.disableClose = true;
+    dialogConfig.autoFocus = true;
+    dialogConfig.hasBackdrop = true;
+    dialogConfig.backdropClass = 'backdrop';
+    dialogConfig.closeOnNavigation = true;
+
+    this.dialogRef = this.dialog.open(DialogComponent, { });
+    this.dialogRef.componentInstance.confirmMessage = "Are you sure you want to delete " + this.currentArticle.title + "?";
+
+
+    document.onclick = (args: any): void => {
+      if (args.target.tagName === 'BODY') {
+        this.dialogRef?.close();
+      }
+    }
+
 
     this.dialogRef.afterClosed().subscribe(result => {
       if (result) {
