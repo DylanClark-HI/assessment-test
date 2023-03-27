@@ -48,7 +48,7 @@ $router = new Router();
 // Database details:
 $un = 'root';                       // DB Username
 $pw = '';                           // DB Password 
-$db = 'portfolio_data';                           // DB Name
+$db = 'assessment_data';                           // DB Name
 $host = 'localhost';                         // Host Name
 $port = 3306;                       // Port Number
 

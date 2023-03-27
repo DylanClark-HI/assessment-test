@@ -27,8 +27,4 @@ export class ArticleListComponent implements OnInit {
     console.log('Edit Article');
   }
 
-  exportDb(): void {
-    console.log('Export DB');
-  }
-
 }

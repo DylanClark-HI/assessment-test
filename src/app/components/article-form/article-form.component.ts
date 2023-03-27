@@ -75,7 +75,6 @@ export class ArticleFormComponent implements OnInit {
         next: (result: any) => {
           if (result.status == "success") {
             alert('New Article created successfully');
-            console.log(result);
             this.router.navigate(['/article-view/' + result.data[0].id]);
           }
         },
