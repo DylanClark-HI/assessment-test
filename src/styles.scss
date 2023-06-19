@@ -1,5 +1,4 @@
 @use '@angular/material' as mat;
-
 @use './theme/mat-palette-gen.scss';
 @use 'sass:map';
 
@@ -21,7 +20,7 @@ $accent: mat-palette($accent-palette);
 $theme: mat-dark-theme($primary, $accent, $warn);
 // $theme: mat-light-theme($primary, $accent, $warn);
 
-@include angular-material-theme($theme);
+@include mat.core-theme($theme);
 
 
 // $my-primary: mat.define-palette(mat.$indigo-palette, 500);
