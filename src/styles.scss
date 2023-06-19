@@ -1,3 +1,63 @@
+@use '@angular/material' as mat;
+
+@use './theme/mat-palette-gen.scss';
+@use 'sass:map';
+
+@include mat.core();
+
+$primary-color: #A1A3A6;
+$accent-color: #0D2341;
+$warn-color: #a83c4a;
+
+$primary-palette: createPalette($primary-color);
+$accent-palette: createPalette($accent-color);
+$warn-palette: createPalette($warn-color);
+
+$warn: mat-palette($warn-palette);
+$primary: mat-palette($primary-palette);
+$accent: mat-palette($accent-palette);
+
+// Pick one
+$theme: mat-dark-theme($primary, $accent, $warn);
+// $theme: mat-light-theme($primary, $accent, $warn);
+
+@include angular-material-theme($theme);
+
+
+// $my-primary: mat.define-palette(mat.$indigo-palette, 500);
+// $my-accent: mat.define-palette(mat.$pink-palette, A200, A100, A400);
+
+// $my-theme: mat.define-light-theme((
+//     color: (
+//         primary: $my-primary,
+//         accent: $my-accent,
+//     )
+// ));
+
+// @mixin color($my-theme) {
+//     // Get the color config from the theme.
+//     $color-config: mat.get-color-config($theme);
+
+//     // Get the primary color palette from the color-config.
+//     $primary-palette: map.get($color-config, 'primary');
+
+//     .my-carousel-button {
+//         // Read the 500 hue from the primary color palette.
+//         color: mat.get-color-from-palette($primary-palette, 500);
+//     }
+// } 
+
+
+// @include mat.all-component-themes($my-theme);
+// @include mat.strong-focus-indicators-theme(purple);
+$light-background: #fafafa;
+
+$light-bg-lighter-5: lighten($light-background, 5%);
+
+button {
+    background-color: $light-bg-lighter-5;
+}
+
 // Some global styling below
 html,
 body {
